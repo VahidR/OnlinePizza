@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>ShowFoodsServlet</servlet-name>
+        <servlet-class>Control.ShowFoodsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>Control.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowIngredientsServlet</servlet-name>
+        <servlet-class>Control.ShowIngredientsServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>AddFoodServlet</servlet-name>
+        <servlet-class>Control.AddFoodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowFoodsServlet</servlet-name>
+        <url-pattern>/ShowFoods/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/User/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowIngredientsServlet</servlet-name>
+        <url-pattern>/ShowIngredients/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFoodServlet</servlet-name>
+        <url-pattern>/AddFood/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFoodServlet</servlet-name>
+        <url-pattern>/AddFoodServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <security-role>
+        <description>Administrator of system</description>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-constraint>
+        <display-name>Security Area</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Area</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+            <role-name>programmer</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <!-- LOGIN CONFIGURATION-->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/adminLogin.jsp</form-login-page>
+            <form-error-page>/loginError.html</form-error-page>
+        </form-login-config>
+    </login-config>
+</web-app>

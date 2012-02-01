@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/OnlinePizza">
+
+    <Resource name="jdbc/PizzaShopDB" auth="Container"
+        maxActive="100" maxIdle="30" maxWait="1000"
+        username="root" password="sesame"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/PizzaShopDB?autoReconnect=true"
+        logAbandoned="true" removeAbandoned="true"
+        removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+
+
+    <Realm className="org.apache.catalina.realm.JDBCRealm" debug="99"
+        driverName="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/pizzashopdb"
+        connectionName="root" connectionPassword="sesame"
+        userTable="user" userNameCol="userName" userCredCol="password"
+        userRoleTable="role" roleNameCol="RoleName" />
+        
+    
+</Context>
